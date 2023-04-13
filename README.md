@@ -36,9 +36,9 @@ sudo mkdir /tftpboot/{windows,ubuntu}
 sudo mkdir /mnt/windows
 ```
 
-# 3. compilando o NBP
+# 3. Compilando o NBP
 
-Clone o repositório
+**Clone o repositório**
 ```
 git clone https://github.com/ipxe/ipxe.git
 ```
