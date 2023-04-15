@@ -207,7 +207,7 @@ sudo systemctl restart nfs-kernel-server.service
 
 **Modifique a pasta raiz do servidor HTTP/HTTPS do padrão /var/www/html para /tftpboot**
 ```
-sudo sed -i 's/\/var\/www\/html/\/tftpboot' /etc/lighttpd/lighttpd.conf
+sudo sed -i 's/\/var\/www\/html/\/tftpboot/' /etc/lighttpd/lighttpd.conf
 ```
 
 **Reinicie o servidor HTTP/HTTPS**
@@ -241,6 +241,11 @@ sudo umount /mnt/cdrom
 ```
 sudo vim /tftpboot/ubuntu/preseed/ubuntu.seed
 ```
+Caso este arquivo esteja como "somente leitura", execute:
+```
+sudo chmod 664 /tftpboot/ubuntu/preseed/ubuntu.seed
+```
+
 
 ```
 # Enable extras.ubuntu.com.
@@ -337,13 +342,13 @@ sudo umount /mnt/cdrom
 
 **Faça o Download do bootloader wimboot**
 ```
-wget 'https://github.com/ipxe/wimboot/releases/latest/download/wimboot'
+sudo wget 'https://github.com/ipxe/wimboot/releases/latest/download/wimboot'
 ```
 Esse executável é necessário para iniciar imagens .wim como boot.wim e install.wim presentes na ISO do windows
 
 **Crie o arquivo winpeshl.ini na pasta /tftpboot/windows**
 ```
-vim /tftpboot/windows/winpeshl.ini
+sudo vim /tftpboot/windows/winpeshl.ini
 ```
 Esse arquivo é um *script* que diz o que o windows executará ao iniciar o ambiente de pré execução
 
@@ -355,7 +360,7 @@ Estamos configurando ele para executar outro *script* chamado install.bat
 
 **Crie o *script* install.bat**
 ```
-vim /tftpboot/windows/install.bat
+sudo vim /tftpboot/windows/install.bat
 ```
 O processo de executar esse script com máquinas BIOS 32/64 bits não funciona, é necessário embarcar o *script* na imagem boot.wim manualmente, consulte:
 - [Windows WinPE](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/winpe-intro)
